@@ -1,4 +1,5 @@
 import React from "react";
+import "./NotFound.css";
 
 const NotFound = () => {
   return (
@@ -7,9 +8,6 @@ const NotFound = () => {
       <p className="NotFound-p">
         Oops! Sorry, it seems like the page you requested does not exist on our server...
       </p>
-      <div class="NotFound-shapes">
-        <div class="NotFound-circle"></div>
-      </div>
     </div>
   );
 };
