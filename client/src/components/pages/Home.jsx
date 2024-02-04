@@ -4,7 +4,7 @@ import "../../utilities.css";
 import "./Home.css";
 import Logo from "../../logo.png";
 
-const GOOGLE_CLIENT_ID = "943851846926-2btt9cb34mrrcqafk5imqf3jtg50a9go.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = "943851846926-m4juvtu2pfc05sfu4q8jal5fe49f9s06.apps.googleusercontent.com";
 
 const Home = ({ handleLogin, handleLogout, userId }) => {
   return (
