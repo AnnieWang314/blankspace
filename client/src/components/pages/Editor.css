@@ -1,74 +1,65 @@
-.Editor-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-  }
-  
-  .Editor-header {
-    background-color: #1A4672;
-    padding: 10px;
-    text-align: center;
-    color: #1A4672;
-  }
-  
-  .Editor-header h1 {
-    margin: 10;
-    display: inline-block;
-    cursor: pointer;
-    padding: 10px;
-  }
-  
-  .Editor-main {
-    display: flex;
-    height: 100vh;
-    padding: 10px;
-  }
-  
-  .Editor-textbox-container {
-    height: 80vh;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 10px;
-    position: relative;
-  }
-  
-  .Editor-textbox {
-    width: 95%;
-    height: calc(100% - 50px);
-    box-sizing: border-box;
-    border: 5px solid #4F7093;
-    border-radius: 10px;
-    padding: 10px;
-    resize: vertical;
-    background-color:#EFF6FF
-  }
-  
-  .Editor-end-label {
-    position: absolute;
-    bottom: 10px;
-    color: #666;
-  }
-  
-  .Editor-sidebar {
-    width: 200px;
-    background-color: #f1f1f1;
-    overflow: auto;
-    padding: 10px;
-    display: none;
-  }
-  
-  .Editor-button {
-    background-color: #1A4672;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    display: block;
-    width: 100%;
-    text-align: left;
-  }
-  
+.Editor-container {
+  min-height: calc(100vh - 45px);
+  display: flex;
+  flex-direction: column;
+}
+.Editor-title {
+  text-align: center;
+}
+
+.Editor-header {
+  background-color: #1a4672;
+  padding: 10px;
+  text-align: center;
+  color: #1a4672;
+}
+
+.Editor-bottom {
+  height: 72vh;
+}
+
+.Editor-textbox-container {
+  height: 86%;
+  padding: 12px;
+  margin: 20px;
+  margin-left: 36px;
+  margin-right: 36px;
+  /* display: flex;
+  flex-direction: column; */
+  /* justify-content: space-between;
+  align-items: center; */
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.Editor-textbox {
+  width: 96%;
+  min-height: 96%;
+  box-sizing: border-box;
+  border: 5px solid #4f7093;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #eff6ff;
+  overflow: auto;
+  resize: none;
+}
+
+.Editor-sidebar {
+  width: 200px;
+  background-color: #f1f1f1;
+  overflow: auto;
+  padding: 10px;
+  display: none;
+}
+
+.Editor-button {
+  background-color: #1a4672;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  text-align: left;
+}

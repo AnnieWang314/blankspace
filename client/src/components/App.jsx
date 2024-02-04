@@ -20,6 +20,7 @@ import { get, post } from "../utilities.js";
  */
 const App = () => {
   const [userId, setUserId] = useState(undefined);
+  const [title, setTitle] = useState("asdf");
 
   useEffect(() => {
     get("/api/whoami").then((user) => {
@@ -61,17 +62,8 @@ const App = () => {
             userId={userId}
           />
         }
-      />
-        <Route
-        path="/editor"
-        element={
-          <Editor
-            // handleLogin={handleLogin}
-            // handleLogout={handleLogout}
-            userId={userId}
-          />
-        }
-      />
+      /> 
+        <Route path="/editor" element={<Editor userId={userId} title={title} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Copyright />
