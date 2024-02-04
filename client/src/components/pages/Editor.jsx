@@ -90,7 +90,7 @@ const Editor = ({ userId, currentProject, setCurrentProject, handleLogout }) => 
           <textarea
             className="Editor-textbox"
             placeholder="Start typing here..."
-            // value={text}
+            defaultValue={currentProject ? currentProject.text : ""}
             onChange={handleKeyDown}
           ></textarea>
         </div>
