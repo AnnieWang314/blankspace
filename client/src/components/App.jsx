@@ -64,6 +64,7 @@ const App = () => {
         }
       /> 
         <Route path="/editor" element={<Editor userId={userId} title={title} />} />
+        <Route path="/unauth" element={<Editor userId={userId} title={title} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Copyright />
