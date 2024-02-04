@@ -75,6 +75,11 @@ const Editor = ({ userId, currentProject, setCurrentProject, handleLogout }) => 
           completeNextSentence(response.result);
         })
         .catch((error) => console.error("Failed to get last sentences", error));
+    } else if (event.key === "Tab") {
+      // Append suggestion to text and clear suggestion box on Tab press
+      event.preventDefault(); // Prevent the default tab action
+      setCurrentText((currentText) => currentText + suggestion);
+      setSuggestion("");
     }
   };
 
@@ -88,7 +93,8 @@ const Editor = ({ userId, currentProject, setCurrentProject, handleLogout }) => 
       .then((response) => {
         // Append the completed sentence to your current text
         console.log(response.suggestion);
-        setCurrentText((currentText) => currentText + " " + response.suggestion);
+        setSuggestion(response.suggestion);
+        // setCurrentText((currentText) => currentText + response.suggestion);
       })
       .catch((error) => console.error("Failed to complete sentence", error));
   };
@@ -163,6 +169,9 @@ const Editor = ({ userId, currentProject, setCurrentProject, handleLogout }) => 
             onChange={(event) => setCurrentText(event.target.value)}
             onKeyDown={handleKeyDown}
           ></textarea>
+          <div className="Editor-suggestions" style={{ color: "gray" }}>
+            {suggestion}
+          </div>
         </div>
       </div>
     </div>

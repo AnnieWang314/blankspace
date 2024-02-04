@@ -195,7 +195,7 @@ router.post("/suggest-text", async (req, res) => {
   const { currentText, projectPurpose } = req.body;
   console.log(`currenttext ${currentText}`);
   console.log(`purpose ${projectPurpose}`);
-  const prompt = `You are an autocompletion assistant. Given the purpose of the project: ${projectPurpose}, complete the following sentences using a maximum of 100 tokens: ${currentText}`;
+  const prompt = `You are an autocompletion assistant. Given the purpose of the project: ${projectPurpose}, complete the following sentences using a maximum of 50 tokens: ${currentText}`;
   console.log(prompt);
 
   try {
