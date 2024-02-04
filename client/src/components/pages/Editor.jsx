@@ -7,9 +7,9 @@ import "../../utilities.css";
 import "./Editor.css";
 
 const Editor = ({ userId, currentProject, setCurrentProject, handleLogout }) => {
-  // const myProject = new Project("", "", "");
   const navigate = useNavigate();
   const [allProjects, setAllProjects] = useState([]);
+  const [currentText, setCurrentText] = useState(""); // Track the current text in the textarea
 
   useEffect(() => {
     if (!userId) {
@@ -27,12 +27,41 @@ const Editor = ({ userId, currentProject, setCurrentProject, handleLogout }) => 
         });
     }
   }, [userId, navigate]);
-  const handleKeyDown = (event) => {
-    if (event.key === " ") {
-      post("/api/text", { projectId: "123", newText: event.target.value }).then((response) => {
+
+  useEffect(() => {
+    if (currentProject) {
+      setCurrentText(currentProject.text);
+    } else {
+      setCurrentText(""); // Set to empty when no currentProject
+    }
+  }, [currentProject]);
+
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+
+  const saveText = debounce(() => {
+    post("/api/text", { projectId: currentProject._id, newText: currentText })
+      .then((response) => {
         setCurrentProject(response.updatedProject);
-        console.log(`updated projects ${project}`);
-      });
+        setCurrentText(response.updatedProject.text);
+        console.log(`Project updated: ${response.updatedProject.name}`);
+      })
+      .catch((error) => console.error("Failed to save text", error));
+  }, 500);
+
+  const handleKeyDown = (event) => {
+    saveText();
+    if (event.key === " ") {
+      console.log("chat thing");
     }
   };
 
@@ -48,6 +77,13 @@ const Editor = ({ userId, currentProject, setCurrentProject, handleLogout }) => 
     });
   };
 
+  const handleEditorLogout = () => {
+    handleLogout();
+    setCurrentText("");
+    setCurrentProject(null);
+    setAllProjects([]);
+  };
+
   return (
     <div className="Editor-container">
       <header>
@@ -59,7 +95,7 @@ const Editor = ({ userId, currentProject, setCurrentProject, handleLogout }) => 
           </Link>
         </div>
         <div className="Editor-header"></div>
-        <div className="Editor-logout-button" onClick={handleLogout}>
+        <div className="Editor-logout-button" onClick={handleEditorLogout}>
           Logout
         </div>
         <h1 className="Editor-title">
@@ -89,8 +125,9 @@ const Editor = ({ userId, currentProject, setCurrentProject, handleLogout }) => 
           <textarea
             className="Editor-textbox"
             placeholder="Start typing here..."
-            // value={text}
-            onChange={handleKeyDown}
+            value={currentText}
+            onChange={(event) => setCurrentText(event.target.value)}
+            onKeyDown={handleKeyDown}
           ></textarea>
         </div>
       </div>
