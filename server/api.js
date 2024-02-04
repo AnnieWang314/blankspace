@@ -23,11 +23,10 @@ const socketManager = require("./server-socket");
 
 const Project = require("./models/project");
 
-require("dotenv").config();
-const openai = require("openai").Configuration.instance.init({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-const { CompletionsApi } = require("openai");
+// require("dotenv").config();
+// const openai = require("openai").initialize({
+//   apiKey: process.env.OPENAI_API_KEY,
+// });
 
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
@@ -96,8 +95,8 @@ router.get("/project", async (req, res) => {
 });
 
 router.post("/text", async (req, res) => {
-  const projectId = req.query.projectId;
-  const newText = req.query.newText;
+  const projectId = req.body.projectId;
+  const newText = req.body.newText;
 
   if (!projectId || newText === undefined) {
     return res
@@ -131,7 +130,7 @@ router.get("/allprojects", async (req, res) => {
   const userId = req.query.userId;
 
   if (!userId) {
-    return res.status(400).send({ message: "Project ID is required as a query parameter" });
+    return res.status(400).send({ message: "User ID is required as a query parameter" });
   }
 
   try {
