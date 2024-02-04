@@ -1,7 +1,8 @@
 import React from "react";
+import "./Unauth.css";
 import { useNavigate } from 'react-router-dom';
 
-function MyComponent({ handleLogin, handleLogout, userId }) {
+function Unauth() {
   const navigate = useNavigate();
 
   const redirectToHome = () => {
@@ -23,4 +24,4 @@ function MyComponent({ handleLogin, handleLogout, userId }) {
   return <Unauth />;
 }
 
-export default MyComponent;
+export default Unauth;

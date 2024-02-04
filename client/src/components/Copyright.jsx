@@ -6,7 +6,7 @@ import "./Copyright.css";
 const Copyright = () => {
   return (
     <div className="Copyright-content">
-      made with <FontAwesomeIcon icon={faHeart} /> by SAKE
+      made with&nbsp;<FontAwesomeIcon icon={faHeart} />&nbsp; by SAKE
     </div>
   );
 };

@@ -1,5 +1,9 @@
 .Description-container {
+<<<<<<< HEAD
   min-height: calc(100vh - 45px);
+=======
+    min-height: calc(100vh - 45px);
+>>>>>>> ca8f4651c966234ae0ba0124ef552ddd80d9e5f2
 }
 .Description-textbox-container {
   flex-grow: 1;

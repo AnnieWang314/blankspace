@@ -15,12 +15,13 @@
 }
 
 .Editor-bottom {
-  height: 72vh;
+  height: 64vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
   gap: 16px;
-  padding: 36px 108px;
+  padding: 26px 108px;
+  padding-bottom: 8px;
   /* justify-content: center; */
 }
 
@@ -44,6 +45,10 @@
   padding: 12px 16px;
   border: 0.5px solid #4f7093;
   overflow-x: auto;
+}
+
+.Editor-project:hover {
+  cursor: pointer;
 }
 
 .Editor-textbox-container {
@@ -92,7 +97,7 @@
   align-items: center;
   justify-content: center;
   font-size: 14px;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-weight: bold;
 }
 
