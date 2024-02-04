@@ -78,7 +78,12 @@ const App = () => {
         <Route
           path="/editor"
           element={
-            <Editor userId={userId} currentProject={currentProject} handleLogout={handleLogout} />
+            <Editor
+              userId={userId}
+              currentProject={currentProject}
+              setCurrentProject={setCurrentProject}
+              handleLogout={handleLogout}
+            />
           }
         />
         <Route path="*" element={<NotFound />} />
