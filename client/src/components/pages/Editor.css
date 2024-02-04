@@ -63,3 +63,11 @@
   width: 100%;
   text-align: left;
 }
+
+.Editor-plus {
+  position: fixed;
+  bottom: 36px; 
+  right: 36px; 
+  z-index: 1000; 
+}
+
