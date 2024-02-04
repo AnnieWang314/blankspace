@@ -3,7 +3,7 @@ Emma Chen (Brown 27'), Sophia Li (Brown 27'), Katerina Nguyen (Brown 27'), Annie
 Submitted to Hack@Brown 2024.
 
 ## Acknowledgement
-MIT lab... etc.
+Skeleton code from MIT Web Lab.
 
 ## Inspiration
 After recognizing the enduring popularity of AI tools like ChatGPT, we felt inspired to contribute our own ideas by generating another proactive approach to learning. As students, we are particularly aware of how much AI technology has improved our lives. We couldn't help but explore the possibility of creating something even better and more efficient than the tools available today. Instead of simply copying and pasting AI-generated text, we aimed to find a way that allows users to actively engage in the learning process. Just as other technologies have inspired us, we hope that blank[space] will become a project looked upon favorably by people from all walks of life.
