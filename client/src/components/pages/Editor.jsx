@@ -74,6 +74,7 @@ const Editor = ({ userId, title }) => {
     <div className="Editor-container">
       <header>
         <div className="Editor-header"></div>
+        <div className="Editor-logout-button">Logout</div>
         <h1 className="Editor-title">{title}</h1>
         <div className="Editor-header"></div>
       </header>

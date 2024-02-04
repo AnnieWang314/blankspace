@@ -69,3 +69,26 @@
   overflow: auto;
   resize: none;
 }
+
+.Editor-logout-button {
+  position: fixed;
+  top: 30px;
+  right: 20px;
+  width: 60px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #1a4672;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+
+.Editor-logout-button:hover {
+  background-color: #13314f;
+}
