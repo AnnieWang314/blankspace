@@ -23,6 +23,12 @@ const socketManager = require("./server-socket");
 
 const Project = require("./models/project");
 
+require("dotenv").config();
+const openai = require("openai").Configuration.instance.init({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+const { CompletionsApi } = require("openai");
+
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
 router.get("/whoami", (req, res) => {
@@ -166,6 +172,31 @@ router.get("/twosentences", async (req, res) => {
 
   // Send the result back
   res.send({ result: lastTwoSentences });
+});
+
+// "text-davinci-003"
+// gpt-4-0125-preview"
+
+router.post("/suggest-text", async (req, res) => {
+  const { currentText, projectPurpose } = req.body;
+  const prompt = `Given the purpose of the project: ${projectPurpose}. ${currentText}`;
+
+  const completionsApi = new CompletionsApi(openai);
+
+  try {
+    const completion = await completionsApi.createCompletion({
+      model: "gpt-3.5-turbo-0125", // or whatever model you choose
+      prompt: prompt,
+      max_tokens: 100, // Adjust based on how long you want the completion to be
+      temperature: 0.7, // Adjust for creativity. Lower is more deterministic.
+      stop: [".", "!", "?", "\n"], // Stop at end of sentence or new line
+    });
+
+    res.send({ suggestion: completion.data.choices[0].text.trim() });
+  } catch (error) {
+    console.error("Error calling OpenAI API:", error);
+    res.status(500).send({ message: "Failed to get suggestion" });
+  }
 });
 
 // anything else falls to this "not found" case
