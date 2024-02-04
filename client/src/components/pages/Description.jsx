@@ -15,7 +15,7 @@ import "./Description.css";
 
 const Description = ({ userId }) => {
   return (
-    <div>
+    <div className="Description-container">
       <h1>Start</h1>
       <div className="Description-title">
         Title:

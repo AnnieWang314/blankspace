@@ -1,47 +1,50 @@
+.Description-container {
+  min-height: calc(100vh - 45px);
+}
 .Description-textbox-container {
-    flex-grow: 1;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 10px;
-    position: relative;
+  flex-grow: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  position: relative;
 }
 
 .Description-title {
-    margin-bottom: 80px;
-    font-size: 50px;
-    font-weight: bold;
-    color: #1A4672;
-    padding: 20px;
+  margin-bottom: 80px;
+  font-size: 50px;
+  font-weight: bold;
+  color: #1A4672;
+  padding: 20px;
 }
 .Description-textbox {
-    width: 95%;
-    height: calc(100% - 50px);
-    box-sizing: border-box;
-    border: 3px solid #4F7093;
-    border-radius: 10px;
-    padding: 20px;
-    resize: vertical;
-    font-family: "Lucida Grande",Verdana;
-    font-size: 20px;
+  width: 95%;
+  height: calc(100% - 50px);
+  box-sizing: border-box;
+  border: 3px solid #4F7093;
+  border-radius: 10px;
+  padding: 20px;
+  resize: vertical;
+  font-family: "Lucida Grande",Verdana;
+  font-size: 20px;
 }
-  
-  .Description-submit-button {
-    width: 100%;
-    padding: 20px;
-    background-color: #1A4672;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    box-sizing: border-box;
-    font-family: monospace;
-    font-size: 40px;
-    font-weight: bold;
-  }
-  
-  .Description-submit-button:hover {
-    background-color: #13314f;
-  }
+
+.Description-submit-button {
+  width: 100%;
+  padding: 20px;
+  background-color: #1A4672;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-family: monospace;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.Description-submit-button:hover {
+  background-color: #13314f;
+}
