@@ -27,7 +27,6 @@ const Editor = ({ userId, currentProject, setCurrentProject, handleLogout }) => 
         });
     }
   }, [userId, navigate]);
-
   const handleKeyDown = (event) => {
     if (event.key === " ") {
       post("/api/text", { projectId: "123", newText: event.target.value }).then((response) => {
