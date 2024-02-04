@@ -20,15 +20,23 @@ import { get, post } from "../utilities.js";
  */
 const App = () => {
   const [userId, setUserId] = useState(undefined);
-  const [title, setTitle] = useState("asdf");
+  const [currentProject, setCurrentProject] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    get("/api/whoami").then((user) => {
-      if (user._id) {
-        // they are registed in the database, and currently logged in.
-        setUserId(user._id);
-      }
-    });
+    get("/api/whoami")
+      .then((user) => {
+        if (user._id) {
+          // they are registed in the database, and currently logged in.
+          setUserId(user._id);
+        }
+      })
+      .then(() =>
+        socket.on("connect", () => {
+          post("/api/initsocket", { socketid: socket.id });
+        })
+      )
+      .finally(() => setIsLoading(false));
   }, []);
 
   const handleLogin = (credentialResponse) => {
@@ -46,6 +54,10 @@ const App = () => {
     post("/api/logout");
   };
 
+  if (isLoading) {
+    return <div className="App-container"></div>;
+  }
+
   return (
     <>
       <Routes>
@@ -54,16 +66,13 @@ const App = () => {
           element={<Home handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />}
         />
         <Route
-        path="/description"
-        element={
-          <Description
-            // handleLogin={handleLogin}
-            // handleLogout={handleLogout}
-            userId={userId}
-          />
-        }
-      /> 
-        <Route path="/editor" element={<Editor userId={userId} title={title} />} />
+          path="/description"
+          element={<Description userId={userId} setCurrentProject={setCurrentProject} />}
+        />
+        <Route
+          path="/editor"
+          element={<Editor userId={userId} currentProject={currentProject} />}
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Copyright />

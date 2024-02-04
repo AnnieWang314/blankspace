@@ -23,11 +23,10 @@ const socketManager = require("./server-socket");
 
 const Project = require("./models/project");
 
-require("dotenv").config();
-const openai = require("openai").Configuration.instance.init({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-const { CompletionsApi } = require("openai");
+// require("dotenv").config();
+// const openai = require("openai").initialize({
+//   apiKey: process.env.OPENAI_API_KEY,
+// });
 
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
@@ -52,7 +51,8 @@ router.post("/initsocket", (req, res) => {
 // |------------------------------|
 
 router.post("/createproject", async (req, res) => {
-  const { name, purpose } = req.body;
+  const { name, purpose, userId } = req.body; // Assume `userId` is passed in the request body
+
   const newProject = new Project({
     name: name,
     purpose: purpose,
@@ -63,10 +63,22 @@ router.post("/createproject", async (req, res) => {
     // Save the new project to the database
     const savedProject = await newProject.save();
 
+    // Find the user by userId and update their projects array
+    const user = await User.findById(userId); // Use the correct identifier here
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Add the new project's _id to the user's projects array
+    user.projects.push(savedProject._id);
+
+    // Save the updated user document
+    await user.save();
+
     // Respond with the newly created project
     res.status(201).send({ newProject: savedProject });
   } catch (error) {
-    // Handle any errors that occur during the save operation
+    // Handle any errors that occur during the operation
     res.status(500).json({ message: "Error creating new project", error: error });
   }
 });
