@@ -1,9 +1,9 @@
 const { OAuth2Client } = require("google-auth-library");
-const User = require("./models/user");
+const User = require("./models/User");
 const socketManager = require("./server-socket");
 
 // create a new OAuth client used to verify google sign-in
-const CLIENT_ID = "943851846926-2btt9cb34mrrcqafk5imqf3jtg50a9go.apps.googleusercontent.com";
+const CLIENT_ID = "943851846926-m4juvtu2pfc05sfu4q8jal5fe49f9s06.apps.googleusercontent.com";
 const client = new OAuth2Client(CLIENT_ID);
 
 // accepts a login token from the frontend, and verifies that it's legit

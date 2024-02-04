@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Project from "../../../../server/models/project";
+import Project from "../../../../server/models/Project";
 import { get, post } from "../../utilities";
 
 import "../../utilities.css";
 import "./Editor.css";
 
-const Editor = ({ userId, title }) => {
+const Editor = ({ userId, project, setProject }) => {
   const myProject = new Project("", "", "");
-  const [project, setProject] = useState();
   const [allProjects, setAllProjects] = useState([]);
 
   useEffect(() => {

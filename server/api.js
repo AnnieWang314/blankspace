@@ -10,7 +10,7 @@
 const express = require("express");
 
 // import models so we can interact with the database
-const User = require("./models/user");
+const User = require("./models/User");
 
 // import authentication library
 const auth = require("./auth");
@@ -21,7 +21,7 @@ const router = express.Router();
 //initialize socket
 const socketManager = require("./server-socket");
 
-const Project = require("./models/project");
+const Project = require("./models/Project");
 
 require("dotenv").config();
 const openai = require("openai").Configuration.instance.init({
@@ -52,7 +52,7 @@ router.post("/initsocket", (req, res) => {
 // |------------------------------|
 
 router.post("/createproject", async (req, res) => {
-  const { name, purpose } = req.body;
+  const { name, purpose, userId } = req.body;
   const newProject = new Project({
     name: name,
     purpose: purpose,
@@ -62,11 +62,22 @@ router.post("/createproject", async (req, res) => {
   try {
     // Save the new project to the database
     const savedProject = await newProject.save();
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Add the new project's _id to the user's projects array
+    user.projects.push(savedProject);
+
+    // Save the updated user document
+    await user.save();
 
     // Respond with the newly created project
     res.status(201).send({ newProject: savedProject });
   } catch (error) {
-    // Handle any errors that occur during the save operation
+    // Handle any errors that occur during the operation
     res.status(500).json({ message: "Error creating new project", error: error });
   }
 });
