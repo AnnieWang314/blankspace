@@ -147,7 +147,7 @@ router.get("/allprojects", async (req, res) => {
   }
 
   try {
-    const user = await User.findById(userId);
+    const user = await User.findOne({ _id: userId }).populate("projects");
 
     if (user) {
       // If the project is found, send it back in the response
