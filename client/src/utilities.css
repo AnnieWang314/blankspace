@@ -45,11 +45,13 @@ form {
 }
 
 h1 {
-  font-size: 6vw;
+  font-size: 7vw;
   padding: 0;
+  padding-top: 10px;
   margin: 0;
   font-weight: 500;
-  /* color: var(--primary); */
+  text-align: center;
+  color: #4C6EFE;
   /* text-shadow: -5px -5px 0 white, 5px -5px 0 white, -5px 5px 0 white, 5px 5px 0 white; */
 }
 
