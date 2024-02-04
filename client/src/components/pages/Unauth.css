@@ -1,8 +1,8 @@
-.NotFound-body {
+.Unauth-body {
     font-weight: 300;
     font-size: 20px;
     color: #1a4672;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Roboto serif", serif;
     background: linear-gradient(to right, #D9D2E9, #4C6EFE);
     margin: 0;
     display: flex;
@@ -12,7 +12,7 @@
     padding: 5vh;
 }
 
-.NotFound-container {
+.Unauth-container {
     text-align: center;
     padding: 40px;
     border-radius: 25px;
@@ -20,37 +20,40 @@
     background-color: #D9D2E9;
 }
 
-.NotFound-h1 {
+.Unauth-h1 {
     color: #ff6b6b;
     font-size: 4em;
     margin: 10px 0;
 }
 
-.NotFound-p {
+.Unauth-p {
     color: #555;
     font-size: 1.2em;
     margin-bottom: 20px;
 }
 
-.NotFound-a {
+.Unauth-a {
     color: #3498db;
     text-decoration: none;
     font-weight: bold;
+}
+
+.Unauth-redirect-button {
+    background-color: #1a4672;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
     font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
 }
 
-.NotFound-shapes {
-    position: relative;
-    margin-top: 40px;
-}
-
-.NotFound-circle {
-    position: absolute;
-    background-color: #4C6EFE;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    top: 0px;
-    left: 50%;
-    transform: translateX(-50%);
+.Unauth-redirect-button:hover {
+    background-color: #13314f;
 }

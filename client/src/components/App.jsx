@@ -8,6 +8,7 @@ import Home from "./pages/Home.jsx";
 import Editor from "./pages/Editor.jsx";
 import Description from "./pages/Description.jsx";
 import Copyright from "./Copyright.jsx";
+import Unauth from "./pages/Unauth.jsx";
 
 import "../utilities.css";
 
@@ -75,6 +76,7 @@ const App = () => {
           path="/description"
           element={<Description userId={userId} setCurrentProject={setCurrentProject} />}
         />
+        <Route path="/unauth" element={<Unauth />} />          
         <Route
           path="/editor"
           element={

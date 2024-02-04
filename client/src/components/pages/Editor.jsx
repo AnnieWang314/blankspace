@@ -1,5 +1,45 @@
 import React, { useState, useEffect } from "react";
 import { get, post } from "../../utilities";
+<<<<<<< HEAD
+import "../../utilities.css";
+import "./Editor.css";
+
+const Editor = ({ userId, title }) => {
+  // const myProject = new Project("", "", "");
+  const [project, setProject] = useState();
+  const [allProjects, setAllProjects] = useState([
+    {
+      id: 1,
+      name: "My Essay",
+      purpose: "I want to write a reflection about my MIT interview",
+      text: "",
+    },
+    { id: 2, name: "Frankenstein", purpose: "I want to summarize the book", text: "" },
+    {
+      id: 3,
+      name: "Job Interview",
+      purpose: "I want to write a cover letter for a job interview",
+      text: "",
+    },
+    {
+      id: 4,
+      name: "Frankenstein asdlfjaoisfj asodfjaosdjoadisjfoais",
+      purpose: "I want to summarize the book",
+      text: "",
+    },
+    { id: 5, name: "Frankenstein", purpose: "I want to summarize the book", text: "" },
+    { id: 6, name: "Frankenstein", purpose: "I want to summarize the book", text: "" },
+    { id: 7, name: "Frankenstein", purpose: "I want to summarize the book", text: "" },
+    { id: 8, name: "Frankenstein", purpose: "I want to summarize the book", text: "" },
+    { id: 9, name: "Frankenstein", purpose: "I want to summarize the book", text: "" },
+    { id: 10, name: "Frankenstein", purpose: "I want to summarize the book", text: "" },
+    { id: 11, name: "Frankenstein", purpose: "I want to summarize the book", text: "" },
+    { id: 12, name: "Frankenstein", purpose: "I want to summarize the book", text: "" },
+    { id: 13, name: "Frankenstein", purpose: "I want to summarize the book", text: "" },
+  ]);
+
+  console.log(allProjects);
+=======
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
@@ -10,6 +50,7 @@ const Editor = ({ userId, currentProject, setCurrentProject, handleLogout }) => 
   // const myProject = new Project("", "", "");
   const navigate = useNavigate();
   const [allProjects, setAllProjects] = useState([]);
+>>>>>>> ca8f4651c966234ae0ba0124ef552ddd80d9e5f2
 
   useEffect(() => {
     if (!userId) {
@@ -71,6 +112,13 @@ const Editor = ({ userId, currentProject, setCurrentProject, handleLogout }) => 
       <div className="Editor-bottom">
         <div className="Editor-sidebar-container">
           <div className="Editor-sidebar">
+<<<<<<< HEAD
+            {allProjects.map((project) => (
+              <div key={project.id} className="Editor-project">
+                {project.name}
+              </div>
+            ))}
+=======
             {allProjects &&
               allProjects.map((project) => (
                 <div
@@ -83,6 +131,7 @@ const Editor = ({ userId, currentProject, setCurrentProject, handleLogout }) => 
                   {project.name || "Unnamed Project"}
                 </div>
               ))}
+>>>>>>> ca8f4651c966234ae0ba0124ef552ddd80d9e5f2
           </div>
         </div>
         <div className="Editor-textbox-container">
