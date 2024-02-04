@@ -6,7 +6,7 @@ import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import "../../utilities.css";
 import "./Editor.css";
 
-const Editor = ({ userId, currentProject, handleLogout }) => {
+const Editor = ({ userId, currentProject, setCurrentProject, handleLogout }) => {
   // const myProject = new Project("", "", "");
   const navigate = useNavigate();
   const [allProjects, setAllProjects] = useState([]);
@@ -28,17 +28,10 @@ const Editor = ({ userId, currentProject, handleLogout }) => {
     }
   }, [userId, navigate]);
 
-  useEffect(() => {
-    console.log(`all ${allProjects}`); // This will log the updated state after changes
-    for (var project in allProjects) {
-      console.log(project);
-    }
-  }, [allProjects]);
-
   const handleKeyDown = (event) => {
     if (event.key === " ") {
       post("/api/text", { projectId: "123", newText: event.target.value }).then((response) => {
-        setProject(response.updatedProject);
+        setCurrentProject(response.updatedProject);
         console.log(`updated projects ${project}`);
       });
     }
@@ -47,6 +40,13 @@ const Editor = ({ userId, currentProject, handleLogout }) => {
   const toggleSidebar = () => {
     const sidebar = document.querySelector(".sidebar");
     sidebar.style.display = sidebar.style.display === "none" ? "block" : "none";
+  };
+
+  const handleProjectClick = (projectId) => {
+    get("/api/project", { projectId: projectId }).then((response) => {
+      setCurrentProject(response.project);
+      console.log(response.project);
+    });
   };
 
   return (
@@ -63,7 +63,9 @@ const Editor = ({ userId, currentProject, handleLogout }) => {
         <div className="Editor-logout-button" onClick={handleLogout}>
           Logout
         </div>
-        <h1 className="Editor-title">title</h1>
+        <h1 className="Editor-title">
+          {currentProject ? currentProject.name : "no project selected"}
+        </h1>
         <div className="Editor-header"></div>
       </header>
 
@@ -72,7 +74,13 @@ const Editor = ({ userId, currentProject, handleLogout }) => {
           <div className="Editor-sidebar">
             {allProjects &&
               allProjects.map((project) => (
-                <div key={project._id} className="Editor-project">
+                <div
+                  key={project._id}
+                  className="Editor-project"
+                  onClick={() => {
+                    handleProjectClick(project._id);
+                  }}
+                >
                   {project.name || "Unnamed Project"}
                 </div>
               ))}
