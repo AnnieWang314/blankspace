@@ -3,14 +3,15 @@ import { Routes, Route } from "react-router-dom";
 
 import jwt_decode from "jwt-decode";
 
-import NotFound from "./pages/NotFound.js";
+import NotFound from "./pages/NotFound.jsx";
 import Home from "./pages/Home.jsx";
+import Copyright from "./Copyright.jsx";
 
 import "../utilities.css";
 
 import { socket } from "../client-socket.js";
 
-import { get, post } from "../utilities";
+import { get, post } from "../utilities.js";
 
 /**
  * Define the "App" component
@@ -43,19 +44,16 @@ const App = () => {
   };
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <Home
-            // handleLogin={handleLogin}
-            // handleLogout={handleLogout}
-            userId={userId}
-          />
-        }
-      />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route
+          path="/"
+          element={<Home handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />}
+        />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Copyright />
+    </>
   );
 };
 

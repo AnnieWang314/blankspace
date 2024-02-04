@@ -33,11 +33,13 @@ function getOrCreateUser(user) {
 }
 
 function login(req, res) {
+  console.log("IN LOGIN FUNCTION");
   verify(req.body.token)
     .then((user) => getOrCreateUser(user))
     .then((user) => {
       // persist user in the session
       req.session.user = user;
+      console.log(`user ${user}`);
       res.send(user);
     })
     .catch((err) => {

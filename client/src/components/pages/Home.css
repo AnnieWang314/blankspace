@@ -1,34 +1,31 @@
 .Home-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    text-align: center;
-    align-content: stretch;
-    gap: 20px;
-}
-
-.Home-body {
-    /* Body styles */
-    background-color: #EFF6FF;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+  min-height: calc(100vh - 141px);
+  padding: 48px 24vw;
 }
 
 /* Logo styles */
 .Home-logo {
-    width: 700px;
-    height: auto;
+  width: 150px;
+  height: auto;
+}
+
+.Home-title {
+  font-size: 60px;
+  /* color: var(--primary); */
 }
 
 .Home-login-btn {
-    font-size: 35px; 
+  font-size: 35px;
 }
 
 .Home-footer {
-    text-align: center;
-    padding: 10px;
-    color: white;
+  text-align: center;
+  padding: 10px;
+  color: white;
 }
