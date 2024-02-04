@@ -1,0 +1,34 @@
+.Home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    align-content: stretch;
+    gap: 20px;
+}
+
+.Home-body {
+    /* Body styles */
+    background-color: #EFF6FF;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Logo styles */
+.Home-logo {
+    width: 700px;
+    height: auto;
+}
+
+.Home-login-btn {
+    font-size: 35px; 
+}
+
+.Home-footer {
+    text-align: center;
+    padding: 10px;
+    color: white;
+}
