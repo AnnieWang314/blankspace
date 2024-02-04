@@ -6,7 +6,7 @@ Submitted to Hack@Brown 2024.
 Skeleton code from MIT Web Lab.
 
 ## Built with
-HTML, CSS, Node.JS, GitHub, Terminal, Express.JS, MongoDB, OpenAI, JavaScript, React, VS Code, Google Authenticator
+HTML, CSS, Node.js, GitHub, Terminal, Express.js, MongoDB, OpenAI, JavaScript, React, VS Code, Google Authenticator
 
 ## Inspiration
 After recognizing the enduring popularity of AI tools like ChatGPT, we felt inspired to contribute our own ideas by generating another proactive approach to learning. As students, we are particularly aware of how much AI technology has improved our lives. We couldn't help but explore the possibility of creating something even better and more efficient than the tools available today. Instead of simply copying and pasting AI-generated text, we aimed to find a way that allows users to actively engage in the learning process. Just as other technologies have inspired us, we hope that blank[space] will become a project looked upon favorably by people from all walks of life.
