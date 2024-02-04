@@ -1,29 +1,43 @@
 import React from "react";
-// import {
-//   GoogleOAuthProvider,
-//   GoogleLogin,
-//   googleLogout,
-// } from "@react-oauth/google";
-
+import { GoogleOAuthProvider, GoogleLogin, googleLogout } from "@react-oauth/google";
 import "../../utilities.css";
 import "./Home.css";
-import Logo from "../../Logo.png";
+import Logo from "../../logo.png";
 
-// //TODO: REPLACE WITH YOUR OWN CLIENT_ID
-// const GOOGLE_CLIENT_ID = "FILL ME IN";
+const GOOGLE_CLIENT_ID = "943851846926-2btt9cb34mrrcqafk5imqf3jtg50a9go.apps.googleusercontent.com";
 
-
-
-const Home = ({ userId }) => {
+const Home = ({ handleLogin, handleLogout, userId }) => {
   return (
-    <div className="Home-container Home-body">
+    <div className="Home-container">
       <h1>Welcome!</h1>
-      <div>Unleash the power of AI to effortlessly complete your thoughts and elevate your writing! Experience a new era of creativity with our intelligent text autocomplete—where innovation meets expression effortlessly.
+      <div>
+        Unleash the power of AI to effortlessly complete your thoughts and elevate your writing!
+        Experience a new era of creativity with our intelligent text autocomplete—where innovation
+        meets expression effortlessly.
       </div>
       <img src={Logo} alt="Logo" className="Home-logo" />
-      <button id="loginBtn" className="Home-login-btn">Login</button>
+      <div className="Home-title">blankspace</div>
+      <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+        {userId ? (
+          <button
+            onClick={() => {
+              googleLogout();
+              handleLogout();
+            }}
+          >
+            Logout
+          </button>
+        ) : (
+          <GoogleLogin
+            width="14px"
+            size="large"
+            onSuccess={handleLogin}
+            onError={(err) => console.log(err)}
+          />
+        )}
+      </GoogleOAuthProvider>
     </div>
-  )
+  );
 };
 
 export default Home;
