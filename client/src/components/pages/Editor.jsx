@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Project from "../../../../server/models/project";
 import { get, post } from "../../utilities";
+
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
+
 import "../../utilities.css";
 import "./Editor.css";
 
@@ -73,7 +78,11 @@ const Editor = ({ userId, title }) => {
   return (
     <div className="Editor-container">
       <header>
-        <div className="Editor-header"></div>
+        <div className="Editor-plus">
+          <Link to="/description">
+            <div><FontAwesomeIcon icon={faCirclePlus} size="3x" style={{ color: '#1a4672' }} /></div>
+          </Link>
+        </div>
         <h1 className="Editor-title">{title}</h1>
         <div className="Editor-header"></div>
       </header>
