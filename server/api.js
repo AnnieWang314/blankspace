@@ -23,10 +23,12 @@ const socketManager = require("./server-socket");
 
 const Project = require("./models/project");
 
-// require("dotenv").config();
-// const openai = require("openai").initialize({
-//   apiKey: process.env.OPENAI_API_KEY,
-// });
+require("dotenv").config();
+const OpenAI = require("openai");
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
@@ -191,25 +193,40 @@ router.get("/twosentences", async (req, res) => {
 
 router.post("/suggest-text", async (req, res) => {
   const { currentText, projectPurpose } = req.body;
-  const prompt = `Given the purpose of the project: ${projectPurpose}. ${currentText}`;
-
-  const completionsApi = new CompletionsApi(openai);
+  console.log(`currenttext ${currentText}`);
+  console.log(`purpose ${projectPurpose}`);
+  const prompt = `You are an autocompletion assistant. Given the purpose of the project: ${projectPurpose}, complete the following sentences using a maximum of 100 tokens: ${currentText}`;
+  console.log(prompt);
 
   try {
-    const completion = await completionsApi.createCompletion({
-      model: "gpt-3.5-turbo-0125", // or whatever model you choose
-      prompt: prompt,
-      max_tokens: 100, // Adjust based on how long you want the completion to be
-      temperature: 0.7, // Adjust for creativity. Lower is more deterministic.
-      stop: [".", "!", "?", "\n"], // Stop at end of sentence or new line
+    const completion = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo-0125", // Or any other suitable model
+      messages: [
+        { role: "system", content: prompt },
+        { role: "user", content: currentText },
+        // { role: "assistant", content: "It was great talking to you last week, Joe." },
+        // { role: "user", content: "I can't wait to see you again next week!" },
+      ],
     });
 
-    res.send({ suggestion: completion.data.choices[0].text.trim() });
+    console.log(completion);
+
+    res.send({ suggestion: completion.choices[0]["message"]["content"] });
   } catch (error) {
     console.error("Error calling OpenAI API:", error);
     res.status(500).send({ message: "Failed to get suggestion" });
   }
 });
+
+// router.post("/open-session", async (req, res) => {
+//   const { projectId } = req.body;
+//   // Logic to retrieve the project's purpose based on projectId
+//   const purpose = "Your project purpose here"; // Placeholder
+
+//   // Optionally, open a session with OpenAI here if needed
+//   // For now, just send back the purpose
+//   res.json({ purpose });
+// });
 
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
