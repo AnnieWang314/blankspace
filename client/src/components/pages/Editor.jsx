@@ -6,7 +6,7 @@ import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import "../../utilities.css";
 import "./Editor.css";
 
-const Editor = ({ userId, currentProject }) => {
+const Editor = ({ userId, currentProject, handleLogout }) => {
   // const myProject = new Project("", "", "");
   const navigate = useNavigate();
   const [allProjects, setAllProjects] = useState([]);
@@ -14,18 +14,26 @@ const Editor = ({ userId, currentProject }) => {
   useEffect(() => {
     if (!userId) {
       navigate("/unauth");
+    } else {
+      console.log("preparing to fetch");
+      get("/api/allprojects", { userId: userId })
+        .then((response) => {
+          setAllProjects(response.projects);
+          console.log(response.projects);
+          console.log("got all projects");
+        })
+        .catch((error) => {
+          console.error("Failed to fetch all projects:", error);
+        });
     }
-
-    console.log("preparing to fetch");
-    get("/api/allprojects", { userId: userId })
-      .then((response) => {
-        setAllProjects(response.projects);
-        console.log("got all projects");
-      })
-      .catch((error) => {
-        console.error("Failed to fetch all projects:", error);
-      });
   }, [userId, navigate]);
+
+  useEffect(() => {
+    console.log(`all ${allProjects}`); // This will log the updated state after changes
+    for (var project in allProjects) {
+      console.log(project);
+    }
+  }, [allProjects]);
 
   const handleKeyDown = (event) => {
     if (event.key === " ") {
@@ -52,7 +60,9 @@ const Editor = ({ userId, currentProject }) => {
           </Link>
         </div>
         <div className="Editor-header"></div>
-        <div className="Editor-logout-button">Logout</div>
+        <div className="Editor-logout-button" onClick={handleLogout}>
+          Logout
+        </div>
         <h1 className="Editor-title">title</h1>
         <div className="Editor-header"></div>
       </header>
@@ -62,8 +72,8 @@ const Editor = ({ userId, currentProject }) => {
           <div className="Editor-sidebar">
             {allProjects &&
               allProjects.map((project) => (
-                <div key={project.id} className="Editor-project">
-                  {project.name}
+                <div key={project._id} className="Editor-project">
+                  {project.name || "Unnamed Project"}
                 </div>
               ))}
           </div>

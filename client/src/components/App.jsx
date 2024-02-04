@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import jwt_decode from "jwt-decode";
 
@@ -19,6 +19,7 @@ import { get, post } from "../utilities.js";
  * Define the "App" component
  */
 const App = () => {
+  const navigate = useNavigate();
   const [userId, setUserId] = useState(undefined);
   const [currentProject, setCurrentProject] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -43,14 +44,19 @@ const App = () => {
     const userToken = credentialResponse.credential;
     const decodedCredential = jwt_decode(userToken);
     console.log(`Logged in as ${decodedCredential.name}`);
-    post("/api/login", { token: userToken }).then((user) => {
-      setUserId(user._id);
-      post("/api/initsocket", { socketid: socket.id });
-    });
+    post("/api/login", { token: userToken })
+      .then((user) => {
+        setUserId(user._id);
+        post("/api/initsocket", { socketid: socket.id });
+      })
+      .then(() => {
+        navigate("/editor");
+      });
   };
 
   const handleLogout = () => {
     setUserId(undefined);
+    navigate("/");
     post("/api/logout");
   };
 
@@ -71,7 +77,9 @@ const App = () => {
         />
         <Route
           path="/editor"
-          element={<Editor userId={userId} currentProject={currentProject} />}
+          element={
+            <Editor userId={userId} currentProject={currentProject} handleLogout={handleLogout} />
+          }
         />
         <Route path="*" element={<NotFound />} />
       </Routes>
