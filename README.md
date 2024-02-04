@@ -1,96 +1,22 @@
-# How to code a webapp with this skeleton
 
-## Initial setup
 
-All teammates will need (explained in https://bit.ly/weblab-install)
+## Inspiration
+After recognizing the enduring popularity of AI tools like ChatGPT, we felt inspired to contribute our own ideas by generating another proactive approach to learning. As students, we are particularly aware of how much AI technology has improved our lives. We couldn't help but explore the possibility of creating something even better and more efficient than the tools available today. Instead of simply copying and pasting AI-generated text, we aimed to find a way that allows users to actively engage in the learning process. Just as other technologies have inspired us, we hope that blank[space] will become a project looked upon favorably by people from all walks of life.
 
-- A bash console (on Mac or Linux, this is Terminal. On Windows, we recommend Git Bash)
-- NodeJS version 18. If it is installed correctly, typing "node --version" should give v18.13.0 and "npm --version" should give 8.19.3
-- Visual Studio Code (or another code editor)
-- the Prettier VSCode extension
+## What it does
+When users first open our webpage, they are directed to our home page where they can log in with their Google accounts, enabling them to maintain an account and access previous projects. After logging in, users are directed to a page requesting the title of the paper they want to write, along with a question about the paper's topic. This process helps the AI software understand the context behind the paper, leading to more accurate autocompletion. Upon pressing "Enter," users are directed to the AI auto-completing editor. As users enter text into the textbox, their sentences autocorrect with the assistance of the background context gathered on the previous page. This enhances efficiency and speeds up the coding process.
 
-Also, all of you will need to go through the MongoDB Atlas setup (https://bit.ly/mongo-setup).
+## How we built it
+The first step we performed was planning out what kind of project we wanted, how we wanted it to look, and what specific steps we would take to implement this.  In regards to the frontend programming and user interface, we used HTML and CSS in order to display our webpage. We utilized VS Code as our code editor and GitHub to store and manage our files.
 
-Additionally for authentication, one of you will need to obtain a CLIENT_ID, instructions are at https://bit.ly/gauth-mit.
+## Challenges we ran into
+Throughout the project, our team worked on various aspects, encountering challenges during the GitHub merging process. As backend-focused programmers, we pushed ourselves to delve into frontend programming, tackling languages like HTML and CSS. Adapting to new syntax and learning unfamiliar languages became essential tasks. The design phase involved significant trial and error, with continuous adjustments made to ensure the design's extensibility and maintainability. Lastly, the time constraints proved demanding, leading us to work through the night to ensure the project worked seamlessly and compiled correctly across all our laptops.
 
-## Downloading these files
+## Accomplishments that we're proud of
+Instead of opting for a project idea with which we were familiar and comfortable, we approached this hackathon with an open mind and eagerness to learn and grow. We chose to step into the vast realm of artificial intelligence and web development. Our goal was to challenge ourselves, and we consistently motivated each other to persevere and grow, both as individuals and as coders. The majority of our team had never participated in a hackathon before, making this event a completely novel experience for us. We take pride in the dedication we invested, committing our entire day and more to work on and execute this project. We stayed up until the project was fully functional, showcasing our perseverance in applying a unique theme and structure to our webpage that aligned with the space theme of this year's hackathon.
 
-First, you probably have a team repository somewhere (the link looks like: https://github.com/weblab-class/teammate1-teammate2-teammate3). You each should clone this (empty) repository by navigating to where you want your folder to be (**NOT in catbook**) and typing: git clone https://github.com/weblab-class/teammate1-teammate2-teammate3.git <-- with the correct link.
+## What we learned
+Since most of us didn't have much experience in collaborative coding, we learned much in the ways of using GitHub. In addition, having failed to utilize some languages in the past, many of us had to learn and understand new languages to help implement their parts in the code for the first time.  
 
-Then, one of your team members will need to do the following:
-
-First on GitHub, download the skeleton (this repository) as a zip file, by clicking Code -> Download as ZIP. (Do not clone it, since this will download extra files, like .git, which will lead to GitHub being confused).
-
-Then, drag over all of the files in this skeleton into your team's folder. **Make sure to also drag over the hidden files!** To see these hidden files, navigate to the skeleton in Finder/File Explorer and press command+shift+period (mac) or View > Show > Hidden items (windows).
-
-The files/folders you must drag over are:
-
-- .babelrc (hidden)
-- .gitignore (hidden)
-- .npmrc (hidden)
-- .prettierrc (hidden)
-- client (folder)
-- package-lock.json
-- package.json
-- README.md
-- server (folder)
-- webpack.config.js
-
-Additionally, you must create a .env file in the root directory. See .env.example for an example of what this file should look like.
-
-Then, in terminal, navigate to your teams folder and push all of the files to your team's GitHub repository as usual:
-
-- git add -A
-- git commit -m "Skeleton code"
-- git push
-
-Now the rest of your teammates can pull all these files with a 'git pull'!
-
-Post on Piazza if you run into any issues
-
-## What you need to change in the skeleton
-
-- Change the Frontend CLIENT_ID (Skeleton.js) to your team's CLIENT_ID (obtain this at https://bit.ly/gauth-mit)
-- Change the Server CLIENT_ID to the same CLIENT_ID (auth.js)
-- Change the Database SRV (mongoConnectionURL) for Atlas (server.js). You got this in the MongoDB setup. remember to replace <password> and <dbname> (should be no < or > in your SRV) (From: https://bit.ly/mongo-setup)
-- Change the Database Name for MongoDB to whatever you put in the SRV to replace <dbname> (server.js)
-- (Optional) Add a favicon to your website at the path client/dist/favicon.ico
-- (Optional) Update website title in client/dist/index.html
-- (Optional) Update this README file ;)
-- (Optional) Update the package.json file with your app name :) (line 2)
-
-## How to run this skeleton
-
-First, 'npm install'
-Then open two seperate terminals, and 'npm run hotloader' in the first, and 'npm start' in the second.
-Then open http://localhost:5050
-
-<!-- ## How to go from this skeleton to your actual app
-
-Check out this [How to Get Started Guide](http://weblab.is/get-started) -->
-
-## Socket stuff
-
-Note: we'll be getting to this in lecture in week 2, so don't worry if you don't know it yet
-
-- If you're not using realtime updating or don't need server->client communication, you can remove socket entirely! (server-socket.js, client-socket.js, and anything that imports them)
-- If you are using sockets, consider what you want to do with the FIXME in server-socket.js
-
-## Edit at your own risk
-
-the following files students do not need to edit. feel free to read them if you would like.
-
-```
-client/src/index.js
-client/src/utilities.js
-client/src/client-socket.js
-server/validator.js
-server/server-socket.js
-.babelrc
-.npmrc
-.prettierrc
-package-lock.json
-webpack.config.js
-```
-
-## Good luck on your project :)
+## What's next for blank[space]
+We hope to broaden the scope of our project on a larger scale. We envision our webpage reaching the heights of other successful apps such as ChatGPT and Grammarly. With the world ever-progressing and becoming more accepting of artificial intelligence and its benefits, we see our project as a very advantageous tool for all ages. We envision that our project will transform the use of AI in education systems for the better, pioneering how AI can enhance the efficacy and quality of education.
