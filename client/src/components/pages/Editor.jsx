@@ -77,6 +77,13 @@ const Editor = ({ userId, currentProject, setCurrentProject, handleLogout }) => 
     });
   };
 
+  const handleEditorLogout = () => {
+    handleLogout();
+    setCurrentText("");
+    setCurrentProject(null);
+    setAllProjects([]);
+  };
+
   return (
     <div className="Editor-container">
       <header>
@@ -88,7 +95,7 @@ const Editor = ({ userId, currentProject, setCurrentProject, handleLogout }) => 
           </Link>
         </div>
         <div className="Editor-header"></div>
-        <div className="Editor-logout-button" onClick={handleLogout}>
+        <div className="Editor-logout-button" onClick={handleEditorLogout}>
           Logout
         </div>
         <h1 className="Editor-title">
