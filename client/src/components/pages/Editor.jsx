@@ -10,6 +10,7 @@ const Editor = ({ userId, currentProject, setCurrentProject, handleLogout }) => 
   const navigate = useNavigate();
   const [allProjects, setAllProjects] = useState([]);
   const [currentText, setCurrentText] = useState(""); // Track the current text in the textarea
+  const [suggestion, setSuggestion] = useState("");
 
   useEffect(() => {
     if (!userId) {
@@ -49,6 +50,11 @@ const Editor = ({ userId, currentProject, setCurrentProject, handleLogout }) => 
   }
 
   const saveText = debounce(() => {
+    if (!currentProject) {
+      console.log("no current project");
+      return;
+    }
+
     post("/api/text", { projectId: currentProject._id, newText: currentText })
       .then((response) => {
         setCurrentProject(response.updatedProject);
@@ -61,8 +67,30 @@ const Editor = ({ userId, currentProject, setCurrentProject, handleLogout }) => 
   const handleKeyDown = (event) => {
     saveText();
     if (event.key === " ") {
-      console.log("chat thing");
+      console.log("pressed a space");
+      get("/api/twosentences", { text: currentText })
+        .then((response) => {
+          // Now send these sentences to OpenAI for completion
+          console.log(`last two sentences ${response.result}`);
+          completeNextSentence(response.result);
+        })
+        .catch((error) => console.error("Failed to get last sentences", error));
     }
+  };
+
+  const completeNextSentence = (text) => {
+    if (!currentProject) {
+      console.log("no project");
+      return;
+    }
+    console.log("completing next sentence");
+    post("/api/suggest-text", { currentText: text, projectPurpose: currentProject.purpose })
+      .then((response) => {
+        // Append the completed sentence to your current text
+        console.log(response.suggestion);
+        setCurrentText((currentText) => currentText + " " + response.suggestion);
+      })
+      .catch((error) => console.error("Failed to complete sentence", error));
   };
 
   const toggleSidebar = () => {
@@ -75,6 +103,12 @@ const Editor = ({ userId, currentProject, setCurrentProject, handleLogout }) => 
       setCurrentProject(response.project);
       console.log(response.project);
     });
+
+    // post("/api/open-session", { projectId: projectId })
+    //   .then((response) => {
+    //     console.log("Session opened with purpose: ", response.purpose);
+    //   })
+    //   .catch((error) => console.error("Failed to open session", error));
   };
 
   const handleEditorLogout = () => {
