@@ -50,7 +50,7 @@ const Description = ({ userId, setCurrentProject }) => {
   };
 
   return (
-    <div>
+    <div className="Description-container">
       <h1>Start</h1>
       <div className="Description-title">
         Title:

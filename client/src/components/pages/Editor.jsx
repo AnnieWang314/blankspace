@@ -51,6 +51,8 @@ const Editor = ({ userId, currentProject }) => {
             </div>
           </Link>
         </div>
+        <div className="Editor-header"></div>
+        <div className="Editor-logout-button">Logout</div>
         <h1 className="Editor-title">title</h1>
         <div className="Editor-header"></div>
       </header>
