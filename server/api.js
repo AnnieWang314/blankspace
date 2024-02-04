@@ -96,8 +96,8 @@ router.get("/project", async (req, res) => {
 });
 
 router.post("/text", async (req, res) => {
-  const projectId = req.query.projectId;
-  const newText = req.query.newText;
+  const projectId = req.body.projectId;
+  const newText = req.body.newText;
 
   if (!projectId || newText === undefined) {
     return res
@@ -131,7 +131,7 @@ router.get("/allprojects", async (req, res) => {
   const userId = req.query.userId;
 
   if (!userId) {
-    return res.status(400).send({ message: "Project ID is required as a query parameter" });
+    return res.status(400).send({ message: "User ID is required as a query parameter" });
   }
 
   try {
