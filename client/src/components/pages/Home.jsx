@@ -13,10 +13,10 @@ const Home = ({ handleLogin, handleLogout, userId }) => {
       <div>
         Unleash the power of AI to effortlessly complete your thoughts and elevate your writing!
         Experience a new era of creativity with our intelligent text autocomplete—where innovation
-        meets expression effortlessly.
+        meets expression seamlessly.
       </div>
       <img src={Logo} alt="Logo" className="Home-logo" />
-      <div className="Home-title">blankspace</div>
+      <div className="Home-title">blank[space]</div>
       <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
         {userId ? (
           <button

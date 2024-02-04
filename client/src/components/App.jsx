@@ -6,6 +6,7 @@ import jwt_decode from "jwt-decode";
 import NotFound from "./pages/NotFound.jsx";
 import Home from "./pages/Home.jsx";
 import Editor from "./pages/Editor.jsx";
+import Description from "./pages/Description.jsx";
 import Copyright from "./Copyright.jsx";
 
 import "../utilities.css";
@@ -51,6 +52,16 @@ const App = () => {
           path="/"
           element={<Home handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />}
         />
+        <Route
+        path="/description"
+        element={
+          <Description
+            // handleLogin={handleLogin}
+            // handleLogout={handleLogout}
+            userId={userId}
+          />
+        }
+      />
         <Route
         path="/editor"
         element={
