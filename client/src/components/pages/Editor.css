@@ -70,6 +70,13 @@
   resize: none;
 }
 
+.Editor-plus {
+  position: fixed;
+  bottom: 36px;
+  right: 36px;
+  z-index: 1000;
+}
+
 .Editor-logout-button {
   position: fixed;
   top: 30px;
