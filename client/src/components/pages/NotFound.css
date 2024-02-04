@@ -1,0 +1,56 @@
+.NotFound-body {
+  font-weight: 300;
+  font-size: 20px;
+  color: #1a4672;
+  font-family: "Courier New", Courier, monospace;
+  background: linear-gradient(to right, #d9d2e9, #4c6efe);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 5vh;
+}
+
+.NotFound-container {
+  text-align: center;
+  padding: 40px;
+  border-radius: 25px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background-color: #d9d2e9;
+}
+
+.NotFound-h1 {
+  color: #ff6b6b;
+  font-size: 4em;
+  margin: 10px 0;
+}
+
+.NotFound-p {
+  color: #555;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.NotFound-a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.NotFound-shapes {
+  position: relative;
+  margin-top: 40px;
+}
+
+.NotFound-circle {
+  position: absolute;
+  background-color: #4c6efe;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+}

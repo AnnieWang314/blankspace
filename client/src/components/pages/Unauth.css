@@ -1,0 +1,59 @@
+.Unauth-body {
+    font-weight: 300;
+    font-size: 20px;
+    color: #1a4672;
+    font-family: "Roboto serif", serif;
+    background: linear-gradient(to right, #D9D2E9, #4C6EFE);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 5vh;
+}
+
+.Unauth-container {
+    text-align: center;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: #D9D2E9;
+}
+
+.Unauth-h1 {
+    color: #ff6b6b;
+    font-size: 4em;
+    margin: 10px 0;
+}
+
+.Unauth-p {
+    color: #555;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.Unauth-a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.Unauth-redirect-button {
+    background-color: #1a4672;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+}
+
+.Unauth-redirect-button:hover {
+    background-color: #13314f;
+}

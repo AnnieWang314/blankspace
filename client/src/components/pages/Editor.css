@@ -46,6 +46,7 @@
   border: 0.5px solid #4f7093;
   overflow-x: auto;
 }
+
 .Editor-project:hover {
   cursor: pointer;
 }
