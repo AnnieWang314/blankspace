@@ -1,6 +1,6 @@
 <h1 align="center">blank[space]</h1>
 
-## List of authors by alphabetical order
+## List of contributors by alphabetical order
 Emma Chen (Brown '27), Sophia Li (Brown '27), Katerina Nguyen (Brown '27), Annie Wang (MIT '27).
 Submitted to Hack@Brown 2024.
 
