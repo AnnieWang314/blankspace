@@ -4,8 +4,6 @@
 Emma Chen (Brown '27), Sophia Li (Brown '27), Katerina Nguyen (Brown '27), Annie Wang (MIT '27).
 Submitted to Hack@Brown 2024.
 
-Check out our submission on Devpost here: https://devpost.com/software/blank-space-s40j1g!
-
 ## Acknowledgement
 Skeleton code from MIT Web Lab.
 
